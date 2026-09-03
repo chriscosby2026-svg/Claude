@@ -17,6 +17,13 @@ free key from Google AI Studio: https://aistudio.google.com/apikey
 If the key is missing, tell the user how to get one and stop — do not guess
 or fabricate video content.
 
+Only YouTube video/Shorts URLs (`youtube.com`, `youtu.be`) are supported.
+Gemini's direct video-URL ingestion recognizes YouTube specifically — it does
+not fetch video from other platforms this way. If the user shares a link from
+elsewhere (Instagram Reels, TikTok, X/Twitter video, Vimeo, etc.), tell them
+that platform isn't supported yet rather than running the script against it
+or guessing at the content from surrounding text.
+
 ## Usage
 
 Run the ingestion script with the video URL:
