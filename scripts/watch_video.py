@@ -11,6 +11,14 @@ from Google AI Studio: https://aistudio.google.com/apikey
 import argparse
 import os
 import sys
+from urllib.parse import urlparse
+
+YOUTUBE_HOSTS = {
+    "youtube.com",
+    "www.youtube.com",
+    "m.youtube.com",
+    "youtu.be",
+}
 
 DEFAULT_PROMPT = """Watch this video closely and produce a markdown walkthrough with:
 
@@ -38,6 +46,17 @@ def main() -> int:
     )
     parser.add_argument("--model", default=MODEL, help="Gemini model to use")
     args = parser.parse_args()
+
+    host = urlparse(args.url).netloc.lower()
+    if host not in YOUTUBE_HOSTS:
+        print(
+            f"Error: this script only supports YouTube video/Shorts URLs.\n"
+            f"Got a URL on '{host or args.url}', which Gemini's direct video-URL "
+            "ingestion does not support (e.g. Instagram Reels, TikTok, X/Twitter "
+            "video, and other platforms are not supported this way).",
+            file=sys.stderr,
+        )
+        return 1
 
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
