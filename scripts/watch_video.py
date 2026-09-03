@@ -25,7 +25,7 @@ Be precise about timestamps and be concrete about on-screen details (exact
 menu items, commands, file names, URLs) since this will be used to turn the
 video into step-by-step instructions."""
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.6-flash"
 
 
 def main() -> int:
