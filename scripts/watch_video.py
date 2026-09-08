@@ -4,14 +4,19 @@
 Usage:
     python3 scripts/watch_video.py <youtube-url> [--prompt "custom instruction"]
 
-Requires GEMINI_API_KEY (or GOOGLE_API_KEY) in the environment. Get a free key
-from Google AI Studio: https://aistudio.google.com/apikey
+Requires GEMINI_API_KEY (or GOOGLE_API_KEY) in the environment, or in a local
+.env file (git-ignored) in the repo root. Get a free key from Google AI
+Studio: https://aistudio.google.com/apikey
 """
 
 import argparse
 import os
 import sys
 from urllib.parse import urlparse
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 YOUTUBE_HOSTS = {
     "youtube.com",
@@ -33,7 +38,7 @@ Be precise about timestamps and be concrete about on-screen details (exact
 menu items, commands, file names, URLs) since this will be used to turn the
 video into step-by-step instructions."""
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.6-flash"
 
 
 def main() -> int:
