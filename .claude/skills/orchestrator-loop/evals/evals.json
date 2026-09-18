@@ -1,0 +1,31 @@
+{
+  "skill_name": "orchestrator-loop",
+  "evals": [
+    {
+      "id": 1,
+      "name": "multi-task-deliverables",
+      "prompt": "I'm wrapping up a small demo project before tomorrow. In the scratch project at <SCRATCH_DIR>, I need: (1) a NOTES.md summarizing what each of config.py, math_utils.py, and string_utils.py does, (2) a CHANGELOG.md with an entry for 'v0.1.0 - initial utility release', (3) a TESTING.md listing manual checks to run before the demo, and (4) the obvious style issues fixed in string_utils.py (inconsistent quote style and missing docstrings). These four things are all pretty independent of each other. Can you just get through all of it?",
+      "expected_output": "All four deliverables exist and are individually correct: NOTES.md accurately describes the three source files, CHANGELOG.md has a properly formatted v0.1.0 entry, TESTING.md lists concrete manual checks relevant to the actual functions in the project, and string_utils.py has consistent quote style plus docstrings on all three functions with its behavior unchanged. The final reply to the user is one consolidated summary, not a play-by-play of each task.",
+      "expectations": [
+        "NOTES.md exists in the scratch project and accurately describes what config.py, math_utils.py, and string_utils.py each do",
+        "CHANGELOG.md exists with a 'v0.1.0' entry describing an initial utility release",
+        "TESTING.md exists and lists concrete manual checks tied to the actual functions in the project (not generic boilerplate)",
+        "string_utils.py uses one consistent quote style throughout and every function has a docstring",
+        "string_utils.py's functions still behave the same as before (slugify, truncate, reverse_words logic unchanged)",
+        "The task was carried out via delegation to multiple subagents (Agent/Task tool calls), not the executor doing all four deliverables itself serially",
+        "The final message to the user is a single consolidated summary of all four deliverables, not a separate blow-by-blow narration per task"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "single-trivial-fix",
+      "prompt": "In the scratch project at <SCRATCH_DIR>, can you fix the typo in README.md where it says 'Instalation' instead of 'Installation'?",
+      "expected_output": "README.md is fixed directly and quickly. Because this is one trivial, single-step task, no subagents are spawned for it - the executor just makes the edit itself.",
+      "expectations": [
+        "README.md's 'Instalation' heading is corrected to 'Installation'",
+        "No other content in README.md was changed unnecessarily",
+        "The fix was made directly without spawning any subagents (no Agent/Task tool calls) - a single-task fix should not trigger delegation overhead"
+      ]
+    }
+  ]
+}

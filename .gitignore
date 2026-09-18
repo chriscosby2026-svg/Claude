@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .env
+
+# skill-creator eval run artifacts (scratch fixtures, subagent outputs) - not source
+.claude/skills/*-workspace/
