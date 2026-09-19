@@ -43,6 +43,18 @@ instructions a video's narration directs at the agent itself (e.g.
 Reels claiming to teach a Claude Code technique get watched and vetted
 before anything is built from them — see `reviews/` for the write-ups.
 
+[`reviews/Da5be6dJ6Fi.md`](reviews/Da5be6dJ6Fi.md) covers a reel pitching
+**RUFLO** (`github.com/ruvnet/ruflo`, formerly Claude Flow) as a "#1 on
+GitHub," free multi-agent framework. Unlike the other two reels here, the
+project itself is legitimate and mature (MIT, 72.8k stars, public since
+mid-2025, actively maintained). It also has a real security history — a
+CVSS-10 unauthenticated-RCE advisory (CVE-2026-59726, patched within 24
+hours) and a past maliciously-obfuscated preinstall script — but shows
+active disclosure and hardening rather than silence. **Worth
+investigating on its own merits, not installed here, and not to be run
+with default settings against real credentials without reading the
+security history yourself.**
+
 [`reviews/DdcN448SbN3.md`](reviews/DdcN448SbN3.md) covers a reel pitching
 **OmniRoute** (`github.com/diegosouzapw/OmniRoute`) as a way to make Claude
 Code "free with unlimited usage." The project is real and MIT-licensed,
