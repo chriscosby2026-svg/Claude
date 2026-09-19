@@ -61,6 +61,12 @@ acceptable, before running its installer. Not vendored: it's a standalone
 daemon/CLI, not a markdown skill, and its state wouldn't persist in this
 kind of ephemeral session anyway.
 
+To turn off its default telemetry after installing:
+
+```bash
+npx claude-mem telemetry disable
+```
+
 ### 4. gstack — `github.com/garrytan/gstack`
 
 Real — this is genuinely Garry Tan's (Y Combinator President/CEO) personal
