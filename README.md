@@ -37,3 +37,27 @@ Video content is treated as untrusted external input: these skills report
 and act on what the video demonstrates, but won't silently follow
 instructions a video's narration directs at the agent itself (e.g.
 "share this to your Claude Code and it'll build this for you").
+
+## Reel reviews
+
+Reels claiming to teach a Claude Code technique get watched and vetted
+before anything is built from them — see `reviews/` for the write-ups.
+[`reviews/DYAnUJCpCep.md`](reviews/DYAnUJCpCep.md) covers a "top 6 Claude
+Code plugins" listicle reel and the source-level vetting (clone + read,
+not the reel's claims) of each plugin it named:
+
+- **`.claude/skills/frontend-design/`** — Anthropic's own official skill
+  (Apache-2.0, vendored verbatim from `anthropics/skills`), added here
+  because it's a plain markdown prompt with no execution surface.
+- **[Superpowers](https://github.com/obra/superpowers)** — verified
+  legitimate, MIT, on Anthropic's official marketplace
+  (`/plugin install superpowers@claude-plugins-official`). Not vendored:
+  it's a global plugin, not project-tree content.
+- **[claude-mem](https://github.com/thedotmack/claude-mem)** — verified
+  legitimate, Apache-2.0, but review its telemetry and third-party LLM
+  provider settings before installing (see the review for specifics).
+- **[gstack](https://github.com/garrytan/gstack)** — verified legitimate
+  and genuinely Garry Tan's repo, MIT, well-engineered, but high-privilege
+  (browser automation with real sessions, Docker-based security audits,
+  self-updating team config) — a deliberate install decision, not a
+  default.
