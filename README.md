@@ -42,6 +42,16 @@ instructions a video's narration directs at the agent itself (e.g.
 
 Reels claiming to teach a Claude Code technique get watched and vetted
 before anything is built from them — see `reviews/` for the write-ups.
+
+[`reviews/DdcN448SbN3.md`](reviews/DdcN448SbN3.md) covers a reel pitching
+**OmniRoute** (`github.com/diegosouzapw/OmniRoute`) as a way to make Claude
+Code "free with unlimited usage." The project is real and MIT-licensed,
+but source-level vetting turned up a critical, unauthenticated
+remote-code-execution advisory (GHSA-hf57-cqmx-p4gr / CVE-2026-88062,
+CVSS 9.5) and an unresolved Socket.dev supply-chain flag (MITM/root-CA
+install, keychain credential harvesting) on a past release — **not
+installed or recommended** on the strength of this reel.
+
 [`reviews/DYAnUJCpCep.md`](reviews/DYAnUJCpCep.md) covers a "top 6 Claude
 Code plugins" listicle reel and the source-level vetting (clone + read,
 not the reel's claims) of each plugin it named:
