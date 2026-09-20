@@ -42,6 +42,14 @@ instructions a video's narration directs at the agent itself (e.g.
 
 Reels claiming to teach a Claude Code technique get watched and vetted
 before anything is built from them — see `reviews/` for the write-ups.
+
+[`reviews/Db9Br3XBTPj.md`](reviews/Db9Br3XBTPj.md) covers a "10 ways your
+vibe-coded app gets sued" listicle: no tool or procedure is demonstrated,
+so nothing was built from it, but the two repeated dollar figures were
+checked against actual FTC and CCPA penalty statutes — they're real
+statutory maximums, presented as if they were fixed, automatic per-user
+fines with every applicability condition stripped out.
+
 [`reviews/DYAnUJCpCep.md`](reviews/DYAnUJCpCep.md) covers a "top 6 Claude
 Code plugins" listicle reel and the source-level vetting (clone + read,
 not the reel's claims) of each plugin it named:
