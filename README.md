@@ -16,6 +16,10 @@ https://www.instagram.com/reel/Db1USzsMNnZ/
 3. **`.claude/skills/skill-from-video/`** — the ingestion framework: takes a
    `watch` breakdown and turns the demonstrated procedure into a new,
    standing Claude Code skill under `.claude/skills/`.
+4. **`.claude/skills/agent-reach-audit/`** — audits a repo's skill system
+   (this one included) and reports what each skill can actually touch:
+   local-only, external-API (with which credential it needs), orchestration,
+   or self-modifying, plus whatever guardrails exist around untrusted input.
 
 ## Usage
 
