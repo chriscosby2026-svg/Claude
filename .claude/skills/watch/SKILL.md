@@ -1,12 +1,12 @@
 ---
 name: watch
-description: Watch a YouTube video (full video or Shorts) and produce a timestamped transcript plus scene-by-scene visual breakdown, using the Gemini API's native video understanding. Use when the user shares a YouTube link and wants Claude to understand, summarize, or learn a procedure from it, or when another skill (e.g. skill-from-video) needs a video ingested first.
+description: Watch a YouTube video (full video or Shorts) or an Instagram Reel/post and produce a timestamped transcript plus scene-by-scene visual breakdown, using the Gemini API's video understanding. Use when the user shares a YouTube or Instagram link and wants Claude to understand, summarize, or learn a procedure from it, or when another skill (e.g. skill-from-video) needs a video ingested first.
 ---
 
 # Watch
 
-Gives Claude the ability to "watch" a YouTube video: not just read a transcript,
-but understand what is shown on screen (UI, code, demos, text overlays) at each
+Gives Claude the ability to "watch" a video: not just read a transcript, but
+understand what is shown on screen (UI, code, demos, text overlays) at each
 timestamp, tied to what is being said at that moment.
 
 ## Prerequisites
@@ -17,22 +17,34 @@ free key from Google AI Studio: https://aistudio.google.com/apikey
 If the key is missing, tell the user how to get one and stop — do not guess
 or fabricate video content.
 
-Only YouTube video/Shorts URLs (`youtube.com`, `youtu.be`) are supported.
-Gemini's direct video-URL ingestion recognizes YouTube specifically — it does
-not fetch video from other platforms this way. If the user shares a link from
-elsewhere (Instagram Reels, TikTok, X/Twitter video, Vimeo, etc.), tell them
-that platform isn't supported yet rather than running the script against it
-or guessing at the content from surrounding text.
+Supported: YouTube video/Shorts URLs (`youtube.com`, `youtu.be`) and
+Instagram Reel/post URLs (`instagram.com`). TikTok, X/Twitter video, Vimeo,
+and other platforms are not supported — tell the user that plainly rather
+than running the script against them or guessing at the content from
+surrounding text.
+
+The two platforms work differently under the hood, both handled
+automatically by the script:
+- **YouTube** — the URL is handed straight to Gemini, which fetches and
+  understands the video natively.
+- **Instagram** — Gemini can't fetch Instagram URLs itself, so the script
+  downloads the Reel/post locally first (via `yt-dlp`) and uploads the file
+  to Gemini's Files API. This only works for public content; a
+  private/login-gated/removed post fails with a clear error rather than
+  being guessed at. Only use this on content you have the right to view —
+  it downloads a copy locally (in a temp dir, cleaned up after the run) for
+  personal analysis, not for redistribution.
 
 ## Usage
 
 Run the ingestion script with the video URL:
 
 ```bash
-python3 scripts/watch_video.py "<youtube-url>"
+python3 scripts/watch_video.py "<youtube-or-instagram-url>"
 ```
 
-First run: `pip install -r scripts/requirements.txt`.
+First run: `pip install -r scripts/requirements.txt` (installs both
+`google-genai` and `yt-dlp`).
 
 This prints markdown to stdout containing:
 1. A timestamped transcript.

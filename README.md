@@ -6,10 +6,12 @@ https://www.instagram.com/reel/Db1USzsMNnZ/
 
 ## The three pieces
 
-1. **`.claude/skills/watch/`** — gives Claude the ability to watch any
-   YouTube video: a timestamped transcript plus a scene-by-scene visual
-   breakdown, powered by Gemini's native video understanding
-   (`scripts/watch_video.py`).
+1. **`.claude/skills/watch/`** — gives Claude the ability to watch a
+   YouTube video or an Instagram Reel/post: a timestamped transcript plus a
+   scene-by-scene visual breakdown, powered by Gemini's video understanding
+   (`scripts/watch_video.py`). YouTube is ingested directly; Instagram
+   content is downloaded locally via `yt-dlp` and uploaded to Gemini, since
+   Gemini can't fetch Instagram URLs itself.
 2. **Gemini API key** — required for `watch` to work. Get a free one from
    Google AI Studio (https://aistudio.google.com/apikey) and set it as
    `GEMINI_API_KEY` in your environment.
@@ -32,6 +34,8 @@ Then in Claude Code:
 
 - "Watch https://youtube.com/watch?v=... and tell me what it covers" →
   triggers the `watch` skill directly.
+- "Watch https://www.instagram.com/reel/... and tell me what it covers" →
+  same skill, via the download-then-upload path.
 - "Turn that video into a skill" (after watching one) → triggers
   `skill-from-video`, which drafts a new skill under `.claude/skills/`.
 
